@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+    <AssemblyName>CS.CoffePoint.Business</AssemblyName>
+    <RootNamespace>CS.CoffePoint.Business</RootNamespace>
+  </PropertyGroup>
+
+</Project>
