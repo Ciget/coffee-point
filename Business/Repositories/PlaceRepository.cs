@@ -1,14 +1,31 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using CS.CoffePoint.Business.Entities;
+using Microsoft.Azure.Documents.Client;
+using Microsoft.Extensions.Configuration;
 
 namespace CS.CoffePoint.Business.Repositories
 {
-    public class PlaceRepository : IPlaceRepository
+    public class PlaceRepository : BaseRepository, IPlaceRepository
     {
-        public async Task<IList<PlaceEntity>> GetList()
+        private const string CollectionName = "";
+        private Uri _collectionUri;
+
+        public IList<PlaceEntity> GetList()
         {
-            throw new System.NotImplementedException();
+            _collectionUri = UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName);
+
+            using (var client = new DocumentClient(new Uri(Endpoint), Key))
+            {
+                return client.CreateDocumentQuery<PlaceEntity>(_collectionUri, new FeedOptions {MaxItemCount = -1})
+                    .Where(x=>x.Title.Length >10)
+                    .ToList();
+            }
+        }
+
+        public PlaceRepository(IConfiguration config) : base(config)
+        {
         }
     }
 }

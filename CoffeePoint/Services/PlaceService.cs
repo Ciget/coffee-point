@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
 using CS.CoffeePoint.Models;
 using CS.CoffePoint.Business.Repositories;
@@ -18,9 +17,9 @@ namespace CS.CoffeePoint.Services
             _mapper = mapper;
         }
 
-        public async Task<IList<PlaceModel>> GetList()
+        public IList<PlaceModel> GetList()
         {
-            var result = await _placeRepo.GetList();
+            var result = _placeRepo.GetList();
 
             return result.Select(x => _mapper.Map<PlaceModel>(x)).ToList();
         }

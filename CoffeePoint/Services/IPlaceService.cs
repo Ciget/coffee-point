@@ -6,6 +6,6 @@ namespace CS.CoffeePoint.Services
 {
     public interface IPlaceService
     {
-        Task<IList<PlaceModel>> GetList();
+        IList<PlaceModel> GetList();
     }
 }
