@@ -1,0 +1,3 @@
+[submodule "analyse"]
+	path = analyse
+	url = https://github.com/Ciget/code-analyse
