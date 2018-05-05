@@ -1,9 +1,13 @@
+using System.IO;
 using AutoMapper;
+using CS.CoffeePoint.Services;
+using CS.CoffePoint.Business.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.Webpack;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 
 namespace CS.CoffeePoint
 {
@@ -21,7 +25,16 @@ namespace CS.CoffeePoint
         {
             services.AddMvc();
             services.AddAutoMapper();
-            services.AddSingleton<IConfiguration>(Configuration);
+            services.AddTransient<IPlaceService, PlaceService>();
+            services.AddTransient<IPlaceRepository, PlaceRepository>();
+
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+            var config = builder.Build();
+
+            services.AddSingleton<IConfiguration>(config);
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
