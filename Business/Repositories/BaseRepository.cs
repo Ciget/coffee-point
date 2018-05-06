@@ -1,6 +1,4 @@
-﻿using System;
-using Microsoft.Azure.Documents.Client;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace CS.CoffePoint.Business.Repositories
 {
@@ -14,7 +12,7 @@ namespace CS.CoffePoint.Business.Repositories
         {
             Endpoint = config["Database:Endpoint"];
             Key = config["Database:Key"];
-            DatabaseName = config["Database:Key"];
+            DatabaseName = config["Database:Name"];
         }
 
         //protected static void Initialize()

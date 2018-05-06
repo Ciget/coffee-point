@@ -9,7 +9,7 @@ namespace CS.CoffePoint.Business.Repositories
 {
     public class PlaceRepository : BaseRepository, IPlaceRepository
     {
-        private const string CollectionName = "";
+        private const string CollectionName = "Places";
         private Uri _collectionUri;
 
         public IList<PlaceEntity> GetList()

@@ -11,15 +11,18 @@ namespace CS.CoffeePoint.Tests
     public class BaseTest
     {
         protected AutofacServiceProvider ServiceProvider;
+        protected IConfiguration Configuration;
 
         [SetUp]
-        public void Setup()
+        public void BaseSetup()
         {
             var configurationBuilder = new ConfigurationBuilder()
+                .AddJsonFile("appsettings.json")
                 .Build();
 
             IServiceCollection collection = new ServiceCollection();
             collection.AddTransient<IConfiguration>(provider => configurationBuilder);
+            Configuration = configurationBuilder;
 
             var cb = new ContainerBuilder();
             cb.RegisterModule(new IoCModule());
