@@ -1,16 +1,19 @@
 using CS.CoffePoint.Business.Repositories;
-using Xunit;
+using NUnit.Framework;
 
 namespace CS.CoffeePoint.Tests
 {
-    public class PlaceRepositoryTest
+    [TestFixture]
+    public class PlaceRepositoryTest : BaseTest
     {
         private PlaceRepository _repo;
 
-        [Fact]
+        [Test]
         public void Test1()
         {
-            //_repo = new PlaceRepository(new );
+           var t=  ServiceProvider.GetService(typeof(IPlaceRepository));
+            //_repo = new PlaceRepository(
+            //    );
         }
     }
 }
