@@ -17,5 +17,10 @@ namespace CS.CoffeePoint.Controllers
         {
             return Ok(_placeService.GetList());
         }
+
+        public IActionResult Put()
+        {
+            return Ok(_placeService.GetList());
+        }
     }
 }
